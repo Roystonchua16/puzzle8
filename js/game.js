@@ -40,22 +40,18 @@ function startTimer() {
 
 function increment() {
   tens++;
-
   if (tens < 9) {
     appendTens.innerHTML = "0" + tens;
   }
-
   if (tens > 9) {
     appendTens.innerHTML = tens;
   }
-
   if (tens > 99) {
     seconds++;
     appendSeconds.innerHTML = "0" + seconds;
     tens = 0;
     appendTens.innerHTML = "0" + 0;
   }
-
   if (seconds > 9) {
     appendSeconds.innerHTML = seconds;
   }
@@ -110,13 +106,13 @@ function moveLeft() {
 
 function reset() {
   //randomise blocks and reset timer
+  randomise();
+  setBlocks();
   clearInterval();
   tens = "00";
   seconds = "00";
   appendTens.innerHTML = tens;
-  appendSeconds.innerHTML = seconds;{
-  randomise();
-  }
+  appendSeconds.innerHTML = seconds;
 }
 
 function randomise() {
