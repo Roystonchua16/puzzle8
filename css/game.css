@@ -1,0 +1,76 @@
+.puzzle-container{
+    display:flex;
+    flex-direction: column;
+    background-color: rgb(7, 150, 150);
+    justify-content: center;
+    align-items: center;
+}
+.puzzle{
+    background-color: black;
+    border: 2px solid red;
+    height: 150px;
+    width: 150px;
+}
+.blocks{
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    flex-wrap: nowrap;
+}
+#block-1{
+    margin: 0 0;
+}
+#block-2{
+    margin: 0 50px;
+}
+#block-3{
+    margin: 0 100px;
+}
+#block-4{
+    margin: 50px 0px;
+}
+#block-5{
+    margin: 50px 50px;
+}
+#block-6{
+    margin: 50px 100px;
+}
+#block-7{
+    margin: 100px 0px;
+}
+#block-8{
+    margin: 100px 50px;
+}
+#block-9{
+    margin: 100px 100px;
+}
+
+#black-screen{
+    background-color: rgba(0, 0,0,0.8);
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+#complete-game{
+    height: 300px;
+    width: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, p{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
