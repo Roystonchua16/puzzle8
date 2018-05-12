@@ -107,7 +107,6 @@ function moveLeft() {
 function reset() {
   //randomise blocks and reset timer
   randomise();
-  setBlocks();
   clearInterval();
   tens = "00";
   seconds = "00";
