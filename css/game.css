@@ -1,15 +1,16 @@
 .puzzle-container{
     display:flex;
     flex-direction: column;
-    background-color: rgb(7, 150, 150);
+    background-color: #079696;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 .puzzle{
     background-color: black;
     border: 2px solid red;
-    height: 150px;
-    width: 150px;
+    height: 154px;
+    width: 154px;
 }
 
 .blocks{
@@ -56,6 +57,7 @@
     position: absolute;
     height: 100vh;
     width: 100vw;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;

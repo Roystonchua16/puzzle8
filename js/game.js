@@ -14,7 +14,7 @@ const grid = [
 
 $(document).keypress(function(event) {
   let keycode = event.which || event.keyCode;
-  if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100) {
+  if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 || gamestart === true) {
     startTimer();
   }
   if (keycode == 119) {
@@ -26,34 +26,47 @@ $(document).keypress(function(event) {
   } else if (keycode == 100) {
     moveRight();
   }
+  if (blockNumber[8] === 9){
+    if(puzzleComplete()){
+      console.log(interval);
+      clearInterval(interval);
+      $("#black-screen").css("display", "block");
+      gamestart = false;
+    }
+  }
 });
 
 //TIMER
-var seconds = 00;
-var tens = 00;
-var appendTens = document.getElementById("tens");
-var appendSeconds = document.getElementById("seconds");
+let seconds = 00;
+let tens = 00;
+let appendTens = $(".min");
+let appendSeconds = $(".sec");
+let interval = 0;
+let gamestart = false;
 
 function startTimer() {
-  Interval = setInterval(increment, 100);
+  if(!gamestart){
+    gamestart = true;
+    interval = setInterval(function(){increment();}, 1000);
+  }
 }
 
 function increment() {
   tens++;
   if (tens < 9) {
-    appendTens.innerHTML = "0" + tens;
+    appendTens.text("0" + tens);
   }
   if (tens > 9) {
-    appendTens.innerHTML = tens;
+    appendTens.text(tens);
   }
   if (tens > 99) {
     seconds++;
-    appendSeconds.innerHTML = "0" + seconds;
+    appendSeconds.text("0" + seconds);
     tens = 0;
-    appendTens.innerHTML = "0" + 0;
+    appendTens.text("0" + 0);
   }
   if (seconds > 9) {
-    appendSeconds.innerHTML = seconds;
+    appendSeconds.text(seconds);
   }
 }
 
@@ -76,7 +89,7 @@ function moveDown() {
   }
 }
 
-function moveRight() {
+function moveLeft() {
   if (
     blankBlock + 1 >= 0 &&
     blankBlock != 2 &&
@@ -90,7 +103,7 @@ function moveRight() {
   }
 }
 
-function moveLeft() {
+function moveRight() {
   if (
     blankBlock - 1 >= 0 &&
     blankBlock != 0 &&
@@ -108,10 +121,13 @@ function reset() {
   //randomise blocks and reset timer
   randomise();
   clearInterval();
-  tens = "00";
-  seconds = "00";
-  appendTens.innerHTML = tens;
-  appendSeconds.innerHTML = seconds;
+  seconds = 00;
+  tens = 00;
+  $("#black-screen").css("display", "none");
+  gamestart = false;
+  appendTens.text("00");
+  appendSeconds.text("00");
+  setBlocks();
 }
 
 function randomise() {
@@ -147,7 +163,7 @@ function checkSolvability() {
 }
 
 function setBlocks() {
-  console.log(blockNumber);
+  $(".puzzle").html("");
   for (i = 0; i <= 8; i++) {
     if (blockNumber[i] != 9) {
       $(".puzzle").append(
@@ -164,16 +180,15 @@ function setBlocks() {
 }
 
 function puzzleComplete() {
-  for (var i = 1, len = i.length; i < len; i++) {
-    // check if current value smaller than previous value
-    if (data[i] < data[i - 1]) {
-      return false;
+  for(i=0; i<=8; i++){
+    if(blockNumber[i] != i+1){
+      return false
     }
   }
-  return true;
+  return true
 }
 
 $(document).ready(function() {
   reset();
-  setBlocks();
+  // setBlocks();
 });

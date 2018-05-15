@@ -4,11 +4,11 @@ The aim of the game is to make the blocks back to the order shown below
 
 ```
 -------
-|1|2|3|
+|0|1|2|
 -------
-|4|5|6|
+|3|4|5|
 -------
-|7|8| |
+|6|7| |
 -------
 ```
 
